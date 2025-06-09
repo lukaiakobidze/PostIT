@@ -28,6 +28,7 @@ $posts = load_all_posts();
           <img src="assets/uploads/<?= htmlspecialchars($post['image']) ?>" alt="post image" />
         <?php endif; ?>
         <small>Posted on <?= $post['created'] ?></small>
+        <hr>
       </article>
     <?php endforeach; ?>
   </section>
