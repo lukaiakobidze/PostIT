@@ -7,6 +7,8 @@
 </head>
 <body>
   <header>
-    <h1>PostIt</h1>
+    <a href="index.php">
+      <h1>PostIt</h1>
+    </a>
     <hr>
   </header>

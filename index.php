@@ -2,7 +2,7 @@
 session_start();
 include 'includes/header.php';
 include 'includes/functions.php';
-include 'includes/user.php';
+include 'includes/user_class.php';
 
 $posts = load_all_posts();
 ?>
@@ -22,12 +22,30 @@ $posts = load_all_posts();
   <section class="posts">
     <?php foreach (array_reverse($posts) as $post): ?>
       <article class="post">
-        <h2><?= htmlspecialchars($post['author']) ?></h2>
-        <p><?= nl2br(htmlspecialchars($post['text'])) ?></p>
-        <?php if (!empty($post['image'])): ?>
-          <img src="assets/uploads/<?= htmlspecialchars($post['image']) ?>" alt="post image" />
-        <?php endif; ?>
-        <small>Posted on <?= $post['created'] ?></small>
+        <a href="post.php?id=<?= $post->id ?>">
+          <h2><?= htmlspecialchars($post->author) ?></h2>
+          <p><?= nl2br(htmlspecialchars($post->text)) ?></p>
+          <?php if (!empty($post->image)): ?>
+            <img src="assets/uploads/<?= htmlspecialchars($post->image) ?>" alt="post image" />
+          <?php endif; ?>
+          <small>Posted on <?= $post->created ?></small>
+        </a>
+        <?php
+        $likeText = "like";
+        if (isset($_SESSION['user'])):
+          $likeFile = __DIR__ . "/data/likes/{$post->id}_{$_SESSION['user']['username']}.json";
+          $liked = file_exists($likeFile);
+          $likeText = $liked ? "Unlike" : "Like";
+        endif;
+        ?>
+        <form method="post" action="like.php">
+          <input type="hidden" name="post_id" value="<?= $post->id ?>">
+          <button type="submit"><?= $likeText ?></button>
+          <?php
+            $likes = glob(__DIR__ . "/data/likes/{$post->id}_*.json");
+          ?>
+          <span><?= count($likes) ?> likes</span>
+        </form>
         <hr>
       </article>
     <?php endforeach; ?>

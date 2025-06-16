@@ -1,7 +1,12 @@
 <?php
 session_start();
+include 'includes/header.php';
 include 'includes/functions.php';
-include 'includes/user.php';
+include 'includes/user_class.php';
+
+if (isset($_GET['redirect'])) {
+    $_SESSION['redirect_after_login'] = $_GET['redirect'];
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -14,7 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'username' => $user->username,
             'role' => $user->role
         ];
-        header('Location: index.php');
+        if (isset($_SESSION['redirect_after_login'])) {
+            $redirect = $_SESSION['redirect_after_login'];
+            unset($_SESSION['redirect_after_login']); // optional cleanup
+            header("Location: $redirect");
+        } else {
+            header("Location: index.php");
+        }
         exit();
     } else {
         $error = "Invalid credentials.";
@@ -29,3 +40,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <label>Password: <input type="password" name="password" required></label><br>
   <button type="submit">Login</button>
 </form>
+
+<?php include 'includes/footer.php'; ?>

@@ -1,7 +1,8 @@
 <?php
 session_start();
+include 'includes/header.php';
 include 'includes/functions.php';
-include 'includes/user.php';
+include 'includes/user_class.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -28,3 +29,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <label>Admin: <input type="checkbox" name="role" value="admin"></label><br>
   <button type="submit">Register</button>
 </form>
+
+<?php include 'includes/footer.php'; ?>
