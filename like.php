@@ -22,5 +22,5 @@ if (file_exists($likeFile)) {
     file_put_contents($likeFile, json_encode($likeData));
 }
 
-header('Location: index.php');
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 exit();

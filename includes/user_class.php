@@ -11,7 +11,18 @@ class User {
     }
 
     public function register($password) {
-        $file = __DIR__ . '/../data/users/' . md5($this->email) . '.json';
+        $usersDir = __DIR__ . '/../data/users/';
+        
+        
+        foreach (glob($usersDir . '*.json') as $file) {
+            $existingData = json_decode(file_get_contents($file), true);
+            if (isset($existingData['username']) && $existingData['username'] === $this->username) {
+                return false;
+            }
+        }
+
+        
+        $file = $usersDir . md5($this->email) . '.json';
         if (file_exists($file)) return false;
 
         $data = [
@@ -24,6 +35,7 @@ class User {
         file_put_contents($file, json_encode($data));
         return true;
     }
+
 
     public static function login($email, $password) {
         $file = __DIR__ . '/../data/users/' . md5($email) . '.json';

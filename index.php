@@ -22,8 +22,8 @@ $posts = load_all_posts();
   <section class="posts">
     <?php foreach (array_reverse($posts) as $post): ?>
       <article class="post">
+        <h2><?= htmlspecialchars($post->author) ?></h2>
         <a href="post.php?id=<?= $post->id ?>">
-          <h2><?= htmlspecialchars($post->author) ?></h2>
           <p><?= nl2br(htmlspecialchars($post->text)) ?></p>
           <?php if (!empty($post->image)): ?>
             <img src="assets/uploads/<?= htmlspecialchars($post->image) ?>" alt="post image" />
