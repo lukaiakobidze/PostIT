@@ -10,6 +10,7 @@ $posts = load_all_posts();
   <main>
     
     <?php if (isset($_SESSION['user'])): ?>
+      <a href="user_profile.php?username=<?= urlencode($_SESSION['user']['username']) ?>">My Profile</a>
       <a href="create_post.php">New Post</a>
       <a href="logout.php">Logout</a>
       <?php if ($_SESSION['user']['role'] === 'admin'): ?>

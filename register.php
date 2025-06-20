@@ -32,7 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <label>Email: <input type="email" name="email" required></label><br>
     <label>Username: <input type="text" name="username" required></label><br>
     <label>Password: <input type="password" name="password" required></label><br>
-    <label>Admin: <input type="checkbox" name="role" value="admin" ></label><br>
+    <label class="custom-checkbox">
+        <input type="checkbox" name="role" value="admin">
+        <span class="checkmark"></span>
+        Admin
+    </label>
+    <!-- <label>Admin: <input type="checkbox" name="role" value="admin" ></label><br> -->
     <button type="submit">Register</button>
     </form>
 </div>

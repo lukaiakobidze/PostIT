@@ -61,7 +61,7 @@ include 'includes/header.php';
             <h2>Posts by <?= htmlspecialchars($userData['username']) ?> (<?= count($userPosts) ?>)</h2>
             
             <?php if (empty($userPosts)): ?>
-                <p>This user hasn't posted anything yet.</p>
+                <p>No posts</p>
             <?php else: ?>
                 <div class="posts-list">
                     <?php foreach ($userPosts as $post): ?>

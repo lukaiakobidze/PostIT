@@ -77,7 +77,7 @@ foreach ($commentFiles as $file) {
           <button type="submit">Comment</button>
         </form>
         <?php else: ?>
-          <a href="login.php?redirect=<?= urlencode($_SERVER['REQUEST_URI']) ?>">Log in</a> to comment.
+          <a class="button" href="login.php?redirect=<?= urlencode($_SERVER['REQUEST_URI']) ?>"> Log in to comment </a>
         <?php endif; ?>
     </article>
     
