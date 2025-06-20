@@ -32,13 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-<form method="POST">
-  <h2>Login</h2>
-  <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
-  <label>Email: <input type="email" name="email" required></label><br>
-  <label>Password: <input type="password" name="password" required></label><br>
-  <button type="submit">Login</button>
-</form>
-
+<div class="page_wrapper">
+    <form method="POST">
+    <h2>Login</h2>
+    <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
+    <label>Email: <input type="email" name="email" required></label><br>
+    <label>Password: <input type="password" name="password" required></label><br>
+    <button type="submit">Login</button>
+    </form>
+</div>
 <?php include 'includes/footer.php'; ?>

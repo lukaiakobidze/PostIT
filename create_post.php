@@ -26,11 +26,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: index.php');
     exit();
 }
+include 'includes/header.php';
 ?>
 
-<form method="POST" enctype="multipart/form-data">
-  <h2>New Post</h2>
-  <label>Text:<br><textarea name="text" rows="5" cols="40" required></textarea></label><br>
-  <label>Image: <input type="file" name="image" accept="image/*"></label><br>
-  <button type="submit">Post</button>
-</form> 
+
+<div class="page_wrapper">
+    <form method="POST" enctype="multipart/form-data">
+        <h2>New Post</h2>
+        <label>Text:<br><textarea name="text" rows="5" cols="40" required></textarea></label><br>
+        <label>Image: 
+            <label class="custom-file-upload">
+                Upload Image
+                <input type="file" name="image" accept="image/*" hidden>
+            </label>
+        </label><br>
+        <button type="submit">Post</button>
+    </form> 
+</div>
+<?php include 'includes/footer.php'; ?>

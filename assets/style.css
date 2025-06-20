@@ -1,33 +1,640 @@
-.post img {
-    width: 400px;
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 10px;
-    border-radius: 0;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(0deg, rgba(0, 2, 31, 0.95) 0%, rgba(0, 4, 54, 0.95) 50%, rgba(0, 2, 31, 0.95) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    height: 100%;
+}
+
+.page_wrapper {
+    flex: 1; /* this pushes footer to bottom */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+header {
+    background: rgba(0, 2, 31, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(206, 206, 255, 0.466);
+}
+
+header a {
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #ffffff;
+}
+
+header h1 {
+    text-align: left;
+    padding-left: 2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+header hr {
+    display: none;
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 2rem 2rem 2rem 2rem;
+    padding: 0 1rem;
+}
+
+main h1 {
+    text-align: left;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+main h2 {
+    text-align: left;
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+main h3 {
+    text-align: left;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+main a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navigation Links */
+main > a {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c3e50;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem 0.5rem 2rem 0;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.466);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+main > a:hover {
+    background: linear-gradient(135deg, rgba(1, 4, 37, 0.95), rgba(2, 7, 53, 0.95));
+    color: white;
+    border: 1px solid rgba(206, 206, 255, 0.466);
+    
+}
+
+/* Post Styles */
+.posts {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.post {
+    background: rgba(1, 4, 37, 0.95);
+    border-radius: 4px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(206, 206, 255, 0.466);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+
+
+.post:hover {
+    background: rgba(1, 5, 44, 0.95);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.post h2 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.post h2::before {
+    content: '🤖';
+    margin-right: 0.5rem;
+    font-size: 1rem;
 }
 
 .post a {
     text-decoration: none;
     color: inherit;
+    display: block;
+}
+
+.post p {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.post img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: cover;
+    margin: 1rem 0;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.post img:hover {
+    transform: scale(1.02);
+}
+
+.post small {
+    color: #ffffff;
+    font-size: 0.9rem;
+    opacity: 60%;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.post hr {
+    display: none;
+}
+
+
+
+/* Form Styles */
+form {
+    background: rgba(1, 4, 37, 0.95);
+    padding: 2rem;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 2rem;
+    max-width: 1000px;
     
 }
 
-.post textarea{
-    font-size: large;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    width: 25%;
-    height: 50px;
+form h2 {
+    text-align: left;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+form label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+form input,
+form textarea {
+    color: rgba(255, 255, 255, 0.85);
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(206, 206, 255, 0.466);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(3, 7, 58, 0.95);
+    margin-top: 0.5rem;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(1, 4, 37, 0.95), rgba(2, 7, 53, 0.95));
+  color: white;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(206, 206, 255, 0.466);
+  margin-top: 0.5rem;
+}
+
+.custom-file-upload:hover {
+  background: white;
+  color: #667eea;
+}
+
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+form textarea {
     resize: none;
+    min-height: 120px;
+    font-family: inherit;
 }
 
-header a{
+form button {
+    background: linear-gradient(135deg, rgba(1, 4, 37, 0.95), rgba(2, 7, 53, 0.95));
+    color: white;
+    border: 1px solid rgba(206, 206, 255, 0.466);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+    margin-left: auto;
+    display: block;
+}
+
+form button:hover {
+    background: white;
+    color: #667eea;
+}
+
+.create_comment form{
+    background: none;
+    padding: 0;
+    padding-top: 1.5rem;
+    border-radius: 0px;
+    box-shadow: none;
+    backdrop-filter: none;
+    border: none;
+    margin: 0;
+    max-width: 800px;
+    
+}
+
+/* Post Form Specific Styles */
+.post form {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    backdrop-filter: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.post form button {
+    background: linear-gradient(135deg, rgba(1, 4, 37, 0.95), rgba(2, 7, 53, 0.95));
+    color: white;
+    border: 1px solid rgba(206, 206, 255, 0.466);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+    margin: 0;
+}
+
+.post form button:hover {
+    background: white;
+    color: #667eea;
+}
+
+.post  span {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.post textarea {
+    width: 100%;
+    min-height: 80px;
+    margin: 1rem 0;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    resize: none;
+    transition: border-color 0.3s ease;
+    
+}
+
+.post textarea::placeholder{
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.post textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ----------------------------------------  Comments  -------------------------------------------- */
+.comment {
+    background: rgba(1, 4, 37, 0.95);
+    border: 1px solid rgba(206, 206, 255, 0.466);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    
+}
+
+.comment p {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.line_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* optional: aligns vertically */
+  margin-top: 1rem; /* spacing if needed */
+}
+
+.line_flex small {
+    color: #ffffff;
+    font-size: 0.9rem;
+    opacity: 60%;
+    margin-top: 1rem;
+}
+
+.line_flex form {
+    color: white;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    backdrop-filter: none;
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    
+}
+
+.toggle-comments {
+    background: linear-gradient(135deg, rgba(1, 4, 37, 0.95), rgba(2, 7, 53, 0.95));
+    color: white;
+    border: 1px solid rgba(206, 206, 255, 0.466);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.toggle-comments:hover {
+    background: white;
+    color: #667eea;
+}
+
+/* Admin Panel Styles */
+table {
+    width: 100%;
+    background: rgba(1, 5, 44, 0.95);
+    border: 1px solid rgba(206, 206, 255, 0.466);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    
+}
+
+table th {
+    background: rgba(1, 5, 44, 0.95);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+table td {
+    color: white;
+    padding: 1rem;
+    
+}
+
+.cell_centered {
+    text-align: center;
+}
+
+table tr:hover {
+    background: rgba(4, 10, 59, 0.95);
+}
+
+table a {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c3e50;
     text-decoration: none;
-    color: inherit;
+    padding: 0.5rem 0.75rem;
+    border-radius: 25px;
+    border: 1px solid rgba(206, 206, 255, 0.466);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
-.post form{
-    margin-top: 10px;
-    margin-bottom: 10px;
+table a:hover {
+    background: linear-gradient(135deg, rgba(1, 4, 37, 0.95), rgba(2, 7, 53, 0.95));
+    color: white;
+    border: 1px solid rgba(206, 206, 255, 0.466);
+}
+
+/* User Profile Styles */
+.user-profile {
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.user-info p {
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+.post-actions {
+    width: auto;
+    margin-left: auto;
+    display: block;
+    float: left;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c3e50;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem 0.5rem 2rem 0;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.466);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.post-actions:hover {
+    background: linear-gradient(135deg, rgba(1, 4, 37, 0.95), rgba(2, 7, 53, 0.95));
+    color: white;
+    border: 1px solid rgba(206, 206, 255, 0.466);
+}
+
+
+
+
+/* Footer */
+footer {
+    background: rgba(0, 2, 31, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+footer hr {
+    display: none;
+}
+
+footer p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    color: white;
+}
+
+/* Error Messages */
+p[style*="color:red"] {
+    background: #fed7d7;
+    color: #c53030 !important;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #e53e3e;
+    margin: 1rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        padding: 0 1rem;
+        margin: 1rem 1rem 1rem 1rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+        padding-left: 1rem;
+    }
+    
+    .post {
+        padding: 1rem;
+    }
+    
+    form {
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+    
+    table th,
+    table td {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .user-profile {
+        padding: 1.5rem;
+    }
+    
+    main > a {
+        display: block;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.post {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Loading States */
+button:active {
+    transform: translateY(0);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(3, 0, 39, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(3, 0, 41, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
 }

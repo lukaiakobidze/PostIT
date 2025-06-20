@@ -82,6 +82,6 @@ if (!$deletionResults['post']) {
 $_SESSION['message'] = $message;
 
 // Redirect back to the referring page
-header('Location: ' . $returnUrl);
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 exit();
 ?>

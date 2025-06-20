@@ -1,0 +1,6 @@
+dark bg: rgba(0, 2, 31, 0.95)
+mid bg:  rgba(1, 4, 37, 0.95)
+light bg: rgba(1, 5, 44, 0.95)
+border: 1px solid rgba(206, 206, 255, 0.466);
+
+button bg: linear-gradient(135deg, rgba(1, 4, 37, 0.95), rgba(2, 7, 53, 0.95))
